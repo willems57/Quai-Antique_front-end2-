@@ -4,10 +4,10 @@ import Route from "./Route.js";
 export const allRoutes = [
     new Route("/", "Accueil", "/pages/home.html", []),
     new Route("/galerie", "La galerie", "/pages/galerie.html"),
-    new Route("/signin", "Connexion", "/pages/signin.html"),
-    new Route("/signup", "Inscription", "/pages/signup.html"),
-    new Route("/account", "Mon compte", "/pages/account.html", ["client", "admin"]),
-    new Route("/editpassword", "changement de mot de passe", "/pages/auth/editpassword.html", ["client", "admin"]),
+    new Route("/signin", "Connexion", "/pages/auth/signin.html"),
+    new Route("/signup", "Inscription", "/pages/auth/signup.html"),
+    new Route("/account", "Mon compte", "/pages/auth/account.html"),
+    new Route("/editPassword", "modifier mot de passe", "/pages/auth/editPassword.html"),
     new Route("/allResa", "Vos reservations", "/pages/reservation/allResa.html", ["client"]),
     new Route("/reserver", "reserver", "/pages/reservation/reserver.html", ["client"]),
 ];
