@@ -27,7 +27,25 @@ const path = window.location.pathname;
 
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
+  
+  //Vérifier les droits d'accès à la page
+const allRolesArray = actualRoute.authorize;
 
+if(allRolesArray.length > 0){
+  if(allRolesArray.includes("disconnected")){
+    if(isConnected()){
+      window.location.replace("/");
+    }
+  }
+  else{
+    const roleUser = getRole();
+    if(!allRolesArray.includes(roleUser)){
+      window.location.replace("/");
+    }
+  }
+}
+
+  /*
   //Vérifier les droits d'accès à la page
   const allRolesArray = actualRoute.authorize;
 
@@ -44,7 +62,7 @@ const path = window.location.pathname;
       }
     }
   }
-
+*/
 
   // Récupération du contenu HTML de la route
   const html = await fetch(actualRoute.pathHtml).then((data) => data.text());
@@ -68,7 +86,6 @@ document.getElementById("main-page").innerHTML = html;
 
   //afficher et masquer les elements en fonction du role 
   showAndHideElementsForRoles();
-
 
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
